@@ -16,15 +16,30 @@ namespace CMMI.Business
         {
             using (var ctx = new CMMIContainer())
             {
-                var entity = await ctx.Reviews
-                    .SingleOrDefaultAsync(x =>
-                        (x.Approved || !approvedOnly) &&
-                        x.Id == id
-                    );
+                var query = ctx.Reviews.Where(x => x.Id == id);
+
+                if (approvedOnly) query = query.Where(x => x.Approved);
+
+                var entity = await query.SingleOrDefaultAsync();
 
                 if (entity == null) throw new NotFoundException("Review not found.");
 
                 return new ReviewViewModel(entity);
+            }
+        }
+
+        public async Task<IEnumerable<ReviewViewModel>> GetUserReviews(Guid userGuid, bool approvedOnly = true)
+        {
+            using (var ctx = new CMMIContainer())
+            {
+                var query = ctx.Reviews
+                    .Where(x => x.UserGuid == userGuid);
+
+                if (approvedOnly) query = query.Where(x => x.Approved);
+
+                var enties = await query.ToListAsync();
+
+                return enties.Select(x => new ReviewViewModel(x));
             }
         }
 
