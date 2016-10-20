@@ -249,7 +249,6 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\BaseHttpActionResult.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="Results\InternalServerErrorActionResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

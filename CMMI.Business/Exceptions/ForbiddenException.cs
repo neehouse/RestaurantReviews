@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CMMI.Business.Exceptions
 {
     /// <summary>
-    /// Exception returned to WebAPI to return a HttpStatusCode.Forbidden
+    /// Exception returned to WebAPI to return a HttpStatusCode.Forbidden (403)
     /// </summary>
     public class ForbiddenException : Exception
     {

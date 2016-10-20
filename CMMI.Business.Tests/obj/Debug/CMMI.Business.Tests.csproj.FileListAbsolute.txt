@@ -9,3 +9,4 @@ C:\devsource\CMMI\CMMI.Business.Tests\bin\Debug\CMMI.Business.Tests.pdb
 C:\devsource\CMMI\CMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.dll
 C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.pdb
+C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.csprojResolveAssemblyReference.cache

@@ -8,7 +8,7 @@ using System.Web.Http.ExceptionHandling;
 using CMMI.Business.Exceptions;
 using CMMI.Web.Results;
 
-namespace CMMI.Web.Exceptions
+namespace CMMI.Web.Handlers
 {
     /// <summary>
     /// Custom Exception Handler for WebApi to handle standard cases
@@ -19,6 +19,7 @@ namespace CMMI.Web.Exceptions
         {
             var exceptionType = context.Exception.GetType();
 
+            // Return 404 - Not Found
             if (exceptionType == typeof(NotFoundException))
             {
                 context.Result = new BaseHttpActionResult(
@@ -29,6 +30,7 @@ namespace CMMI.Web.Exceptions
                 return;
             }
 
+            // Return 403 - Forbidden
             if (exceptionType == typeof(ForbiddenException))
             {
                 context.Result = new BaseHttpActionResult(
@@ -39,17 +41,14 @@ namespace CMMI.Web.Exceptions
                 return;
             }
 
-            if (exceptionType == typeof(ForbiddenException))
-            {
+            // add addition exception types here.
 
-            }
-
-            context.Result = new InternalServerErrorActionResult(
-                "An unhandled exception occurred; check the log for more information.",
-                context.Exception.Source,
-                Encoding.UTF8,
-                context.Request,
-                context.Exception);
+            // Return 500 - Server Error (default)
+            context.Result = new BaseHttpActionResult(
+                    context.Exception.Message,
+                    context.Exception,
+                    context.Request,
+                    HttpStatusCode.InternalServerError); ;
         }
     }
 }

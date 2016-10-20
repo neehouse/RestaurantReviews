@@ -10,7 +10,7 @@ namespace CMMI.Business.Exceptions
 {
 
     /// <summary>
-    /// Exception returned to WebAPI to return a HttpStatusCode.NotFound
+    /// Exception returned to WebAPI to return a HttpStatusCode.NotFound (404)
     /// </summary>
     public class NotFoundException : Exception
     {

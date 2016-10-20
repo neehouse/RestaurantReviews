@@ -5,8 +5,8 @@
     app.constant('$user', null);
 
     app.factory('securityInterceptor', interceptor);
-    interceptor.$inject = ['$rootScope', '$q', '$user'];
-    function interceptor($rootScope, $q, $user) {
+    interceptor.$inject = ['$q', '$user', '$location'];
+    function interceptor($q, $user, $location) {
         return {
             request: request,
             response: response,
@@ -28,7 +28,7 @@
         function responseError(data) {
             switch (data.status) {
                 case 401: // unauthorized
-                    $rootScope.$broadcast('security.unauthorized');
+                    $location.path('/account/login');
                     return $q.reject(data);
                     break;
                 default:
@@ -69,6 +69,9 @@
             })
             .when('/restaurant/:id/review', {
                 template: '<restaurant-view></restaurant-view>'
+            })
+            .when('/user/:id', {
+                template: '<user-view></user-view>'
             })
             //.otherwise({
             //    redirectTo: '/restaurant' 

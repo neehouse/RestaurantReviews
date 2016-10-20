@@ -1,8 +1,9 @@
-﻿<h1>Restaurants</h1>
+﻿    <h1>Restaurants <a class="pull-right btn btn-successs" href="/restaurant/new">Submit a Restaurant</a>
+</h1>
 <form class="form-horizontal">
     <fieldset>
         <div class="form-group">
-            <input type="text" placeholder="City" class="form-control"
+            <input type="text" placeholder="Search by City" class="form-control"
                    ng-model="restaurantList.city"
                    uib-typeahead="city for city in restaurantList.getCities($viewValue) | limitTo:10"
                    typeahead-editable="false" typeahead-min-length="2" typeahead-on-select="restaurantList.citySelected($item, $model, $label, $event)"
@@ -17,18 +18,17 @@
 <table class="table table-striped" ng-if="restaurantList.restaurants.length">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Name / Rating</th>
             <th>City</th>
-            <th>Rating</th>
-            <th>Reviews</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="restaurant in restaurantList.restaurants">
-            <td><a href="restaurant/{{restaurant.Id}}">{{restaurant.Name}}</a></td>
+            <td>
+                <a href="restaurant/{{restaurant.Id}}">{{restaurant.Name}}</a>
+                <span class="badge">Rated {{restaurant.Rating | number:2}}/5.00 by {{restaurant.ReviewCount}} users</span>
+            </td>
             <td>{{restaurant.City}}</td>
-            <td class="text-right">{{restaurant.Rating | number:2}}</td>
-            <td class="text-right">{{restaurant.ReviewCount}}</td>
         </tr>
     </tbody>
 </table>
