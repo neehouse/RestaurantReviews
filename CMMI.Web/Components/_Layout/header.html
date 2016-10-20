@@ -1,0 +1,19 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">CMMI Restaurants</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ng-if="!header.$user"><a ng-href="/account/login">Login</a></li>
+                <li ng-if="!header.$user"><a ng-href="/account/register">Register</a></li>
+                <li ng-if="header.$user"><a href ng-click="header.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

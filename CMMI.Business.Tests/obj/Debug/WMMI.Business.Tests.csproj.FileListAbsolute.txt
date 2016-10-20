@@ -1,0 +1,6 @@
+C:\devsource\WMMI\WMMI.Business.Tests\bin\Debug\WMMI.Business.Tests.dll
+C:\devsource\WMMI\WMMI.Business.Tests\bin\Debug\WMMI.Business.Tests.pdb
+C:\devsource\WMMI\WMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\devsource\WMMI\WMMI.Business.Tests\obj\Debug\WMMI.Business.Tests.csprojResolveAssemblyReference.cache
+C:\devsource\WMMI\WMMI.Business.Tests\obj\Debug\WMMI.Business.Tests.dll
+C:\devsource\WMMI\WMMI.Business.Tests\obj\Debug\WMMI.Business.Tests.pdb

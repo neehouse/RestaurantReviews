@@ -1,0 +1,20 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+<html ng-app="CMMI.Restaurants">
+<head>
+    <title></title>
+    <base href="~/"/>
+    <link type="text/css" href="~/spa/styles" rel="stylesheet" />
+</head>
+<body>
+    <header></header>
+    <content>
+        <div class="container">
+            <div ng-view autoscroll></div>
+        </div>
+    </content>
+
+    <script type="text/javascript" src="~/spa/libs"></script>
+    <script type="text/javascript" src="~/spa/app"></script>
+    <script type="text/javascript" src="~/spa/components"></script>
+</body>
+</html>

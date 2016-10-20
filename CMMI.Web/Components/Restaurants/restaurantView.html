@@ -1,0 +1,31 @@
+﻿<h1>
+    {{restaurantView.restaurant.Name}} <small>{{restaurantView.restaurant.City}}</small>
+</h1>
+<p class="text-muted">
+    <span class="badge">Rated {{restaurantView.restaurant.Rating | number:2}}/5.00 by {{restaurantView.restaurant.ReviewCount}} users</span>
+    Added by {{restaurantView.restaurant.User.Username || '[User]'}} on {{restaurantView.restaurant.CreateDate | date}}.
+</p>
+
+<h3>
+    Reviews
+    <a class="pull-right btn btn-success btn-sm" ng-disabled="restaurantView.restaurant.reviewed" href="/restaurant/{{restaurantView.restaurant.Id}}/review">Submit a Review</a>
+</h3>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped" ng-if="restaurantView.reviews.length">
+            <thead>
+                <tr>
+                    <th>User/Rating</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="review in restaurantView.reviews">
+                    <td>{{review.User.Username || '[User]'}} <span class="badge">Rated: {{review.Rating | number:2}}</span></td>
+                    <td>{{review.Comment}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-center text-muted" ng-if="restaurantView.reviews.length == 0">Be the first to review this restaurant.  Submit a review above.</p>
+    </div>
+</div>

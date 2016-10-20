@@ -1,0 +1,10 @@
+C:\devsource\WMMI\WMMI.Data\bin\Debug\WMMI.Data.dll.config
+C:\devsource\WMMI\WMMI.Data\bin\Debug\WMMI.Data.dll
+C:\devsource\WMMI\WMMI.Data\bin\Debug\WMMI.Data.pdb
+C:\devsource\WMMI\WMMI.Data\bin\Debug\EntityFramework.dll
+C:\devsource\WMMI\WMMI.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\devsource\WMMI\WMMI.Data\bin\Debug\EntityFramework.xml
+C:\devsource\WMMI\WMMI.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\devsource\WMMI\WMMI.Data\obj\Debug\WMMI.Data.csprojResolveAssemblyReference.cache
+C:\devsource\WMMI\WMMI.Data\obj\Debug\WMMI.Data.dll
+C:\devsource\WMMI\WMMI.Data\obj\Debug\WMMI.Data.pdb

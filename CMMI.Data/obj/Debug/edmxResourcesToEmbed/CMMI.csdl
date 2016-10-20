@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CMMI" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="CMMIContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Restaurants" EntityType="CMMI.Restaurant" />
+    <EntitySet Name="Reviews" EntityType="CMMI.Review" />
+    <AssociationSet Name="RestaurantReview" Association="CMMI.RestaurantReview">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Rating" Type="Double" Nullable="false" />
+    <Property Name="ReviewCount" Type="Int16" Nullable="false" />
+    <Property Name="UserGuid" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" Precision="3" />
+    <Property Name="Approved" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Reviews" Relationship="CMMI.RestaurantReview" FromRole="Restaurant" ToRole="Review" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+    <Property Name="Rating" Type="Int16" Nullable="false" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+    <Property Name="Approved" Type="Boolean" Nullable="false" />
+    <Property Name="UserGuid" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Restaurant" Relationship="CMMI.RestaurantReview" FromRole="Review" ToRole="Restaurant" />
+  </EntityType>
+  <Association Name="RestaurantReview">
+    <End Type="CMMI.Restaurant" Role="Restaurant" Multiplicity="1" />
+    <End Type="CMMI.Review" Role="Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,9 @@
+C:\devsource\WMMI\WMMI.Business\bin\Debug\WMMI.Business.dll
+C:\devsource\WMMI\WMMI.Business\bin\Debug\WMMI.Business.pdb
+C:\devsource\WMMI\WMMI.Business\obj\Debug\WMMI.Business.dll
+C:\devsource\WMMI\WMMI.Business\obj\Debug\WMMI.Business.pdb
+C:\devsource\WMMI\WMMI.Business\bin\Debug\WMMI.Data.dll
+C:\devsource\WMMI\WMMI.Business\bin\Debug\EntityFramework.dll
+C:\devsource\WMMI\WMMI.Business\bin\Debug\WMMI.Data.pdb
+C:\devsource\WMMI\WMMI.Business\bin\Debug\EntityFramework.xml
+C:\devsource\WMMI\WMMI.Business\obj\Debug\WMMI.Business.csprojResolveAssemblyReference.cache

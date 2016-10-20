@@ -1,0 +1,11 @@
+{
+  "name": "CMMI.Web",
+  "authors": [
+    "Casey Neehouse <casey@neehouse.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true
+}
