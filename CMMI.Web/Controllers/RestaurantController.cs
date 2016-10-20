@@ -12,7 +12,7 @@ using Microsoft.ApplicationInsights.WindowsServer;
 namespace CMMI.Web.Controllers
 {
     [Authorize]
-    public class RestaurantController : ApiController
+    public class RestaurantController : BaseApiController
     {
         private readonly Restaurants _Restaurants;
         public RestaurantController()

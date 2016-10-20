@@ -11,7 +11,7 @@ using CMMI.Business.Models;
 namespace CMMI.Web.Controllers
 {
     [Authorize]
-    public class ReviewsController : ApiController
+    public class ReviewsController : BaseApiController
     {
         private readonly Reviews _Reviews;
         public ReviewsController()
@@ -27,6 +27,26 @@ namespace CMMI.Web.Controllers
             var review = await _Reviews.GetReview(id);
 
             return Ok(review);
+        }
+
+        [AllowAnonymous]
+        [Route("api/user/{userGuid}/reviews"), HttpGet]
+        // GET: api/Reviews/5
+        public async Task<IHttpActionResult> Get(Guid userGuid)
+        {
+            var review = await _Reviews.GetUserReviews(userGuid);
+
+            return Ok(review);
+        }
+
+        [AllowAnonymous]
+        [Route("api/user/current/reviews"), HttpGet]
+        // GET: api/Reviews/5
+        public async Task<IHttpActionResult> Get()
+        {
+            var reviews = await _Reviews.GetUserReviews(CurrentUserGuid);
+
+            return Ok(reviews);
         }
 
         [Route("api/restaurant/{id}/review"), HttpPost]
