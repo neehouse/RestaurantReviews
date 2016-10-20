@@ -33,24 +33,16 @@ namespace CMMI.Web.Controllers
         // POST: api/Reviews
         public async Task<IHttpActionResult> Post(int id, [FromBody]ReviewBindingModel review)
         {
-            if (ModelState.IsValid)
-            {
-                var created = await _Reviews.Create(review);
-                return Created("api/review/" + created.Id, created);
-            }
-            return BadRequest(ModelState);
+            var created = await _Reviews.Create(review);
+            return Created("api/review/" + created.Id, created);
         }
 
         [Route("api/review/{id}"), HttpPut]
         // PUT: api/Reviews/5
         public async Task<IHttpActionResult> Put(int id, [FromBody]ReviewBindingModel review)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await _Reviews.Update(id, review);
-                return Ok(result);
-            }
-            return BadRequest(ModelState);
+            var result = await _Reviews.Update(id, review);
+            return Ok(result);
         }
 
         [Route("api/review/{id}"), HttpDelete]

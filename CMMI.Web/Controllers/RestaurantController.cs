@@ -60,24 +60,16 @@ namespace CMMI.Web.Controllers
         // POST: api/Restaurant
         public async Task<IHttpActionResult> Post([FromBody] RestaurantBindingModel restaurant)
         {
-            if (ModelState.IsValid)
-            {
-                var created = await _Restaurants.Create(restaurant);
-                return Created("api/Restaurant/" + created.Id, created);
-            }
-            return BadRequest(ModelState);
+            var created = await _Restaurants.Create(restaurant);
+            return Created("api/Restaurant/" + created.Id, created);
         }
 
         [Route("api/restaurant/{id}"), HttpPut]
         // PUT: api/Restaurant/5
         public async Task<IHttpActionResult> Put(int id, [FromBody] RestaurantBindingModel restaurant)
         {
-            if (ModelState.IsValid)
-            {
-                var created = await _Restaurants.Update(id, restaurant);
-                return Ok(created);
-            }
-            return BadRequest(ModelState);
+            var created = await _Restaurants.Update(id, restaurant);
+            return Ok(created);
         }
 
         [Route("api/restaurant/{id}"), HttpDelete]
