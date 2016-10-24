@@ -8,7 +8,7 @@
 
 <h3>
     Reviews
-    <a class="pull-right btn btn-success btn-sm" ng-disabled="restaurantView.restaurant.reviewed" href="/restaurant/{{restaurantView.restaurant.Id}}/review">Submit a Review</a>
+    <a class="pull-right btn btn-success btn-sm" ng-disabled="restaurantView.restaurant.reviewed" href ng-click="restaurantView.addNewReview()">Submit a Review</a>
 </h3>
 <div class="panel panel-default">
     <div class="panel-body">

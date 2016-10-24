@@ -11,6 +11,7 @@
             $onInit: $onInit,
             getCities: getCities,
             citySelected: citySelected,
+            addNewRestaurant: addNewRestaurant,
 
             restaurants: [],
             loading: false,
@@ -36,6 +37,10 @@
                 }, function(response) {
                     vm.restaurants = [];
                 });
+        }
+
+        function addNewRestaurant() {
+            
         }
     }
 })();
