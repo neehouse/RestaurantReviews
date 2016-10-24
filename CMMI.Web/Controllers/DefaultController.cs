@@ -8,9 +8,11 @@ namespace CMMI.Web.Controllers
 {
     public class DefaultController : Controller
     {
-        public ViewResult Index(string path)
+        public ActionResult Index()
         {
-            return View("~/default.cshtml");
+            ViewBag.Title = "Home Page";
+
+            return View();
         }
     }
 }

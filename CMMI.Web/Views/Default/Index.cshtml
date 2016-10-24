@@ -1,9 +1,12 @@
 ﻿@inherits WebViewPage
+@{
+    Layout = "";
+}
 <html ng-app="CMMI.Restaurants">
 <head>
     <title></title>
     <base href="~/"/>
-    <link type="text/css" href="~/spa/styles" rel="stylesheet" />
+    @Styles.Render("~/spa/styles")
 </head>
 <body>
     <header></header>
@@ -13,8 +16,8 @@
         </div>
     </content>
 
-    <script type="text/javascript" src="~/spa/libs"></script>
-    <script type="text/javascript" src="~/spa/app"></script>
-    <script type="text/javascript" src="~/spa/components"></script>
+    @Scripts.Render("~/spa/libs")
+    @Scripts.Render("~/spa/app")
+    @Scripts.Render("~/spa/components")
 </body>
 </html>

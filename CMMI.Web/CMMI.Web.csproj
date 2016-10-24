@@ -323,7 +323,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="default.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="bower_components\angular\angular.min.js.gzip" />
     <Content Include="bower_components\angular\angular.min.js.map" />
     <Content Include="bower_components\angular-route\angular-route.min.js.map" />
@@ -368,9 +368,7 @@
       <Name>CMMI.Business</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Default\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
