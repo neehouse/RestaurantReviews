@@ -26,8 +26,8 @@
             return $http.get('/api/restaurant/cities', { params: { search: search } });
         }
 
-        function create(review) {
-
+        function create(restaurant) {
+            return $http.post('/api/restaurant', restaurant);
         }
 
         function update(id, review) {

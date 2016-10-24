@@ -12,16 +12,15 @@ namespace CMMI.Business
 {
     public class Restaurants
     {
-        public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = true)
+        public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = false)
         {
             using (var ctx = new CMMIContainer())
             {
-                var entity = await ctx.Restaurants
-                    //.Include(x => x.User)
-                    .SingleOrDefaultAsync(x =>
-                        (x.Approved || !approvedOnly) &&
-                        x.Id == id
-                    );
+                var query = ctx.Restaurants.Where(x => x.Id == id);
+
+                if (approvedOnly) query = query.Where(x => x.Approved);
+
+                var entity = await query.SingleOrDefaultAsync();
 
                 if (entity == null) throw new NotFoundException("Restaurant not found.");
 

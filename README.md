@@ -28,7 +28,7 @@ Developer Notes
 General
 1. For larger projects, I would use IoC containers to do injection.  I wired the API Controllers to use the default constructor in a similar structure, but with direct references.
 2. Unit Tests - Coming soon.
-3. Using EntityFramework.  Did Model (designer first) in this scenario.
+4. Should implement UnitOfWork for EF.
 
 CMMI.Web
 ---------------

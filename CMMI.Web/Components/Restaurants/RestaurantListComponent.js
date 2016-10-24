@@ -5,8 +5,8 @@
         controllerAs: 'restaurantList'
     });
 
-    controller.$inject = ['RestaurantService'];
-    function controller(RestaurantService) {
+    controller.$inject = ['RestaurantService', '$uibModal', '$location'];
+    function controller(RestaurantService, $uibModal, $location) {
         var vm = angular.extend(this, {
             $onInit: $onInit,
             getCities: getCities,
@@ -40,7 +40,14 @@
         }
 
         function addNewRestaurant() {
-            
+            var modal = $uibModal.open({
+                component: 'restaurant-form',
+                resolve: {}
+            });
+
+            modal.result.then(function (restaurant) {
+                $location.path('/restaurant/' + restaurant.Id);
+            });
         }
     }
 })();

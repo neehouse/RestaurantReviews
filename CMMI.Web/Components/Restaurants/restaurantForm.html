@@ -1,1 +1,27 @@
-﻿
+﻿<form ng-submit="restaurantForm.submit(restaurant)" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Submit a Restaurant</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="name">Restaurant Name</label>
+            <input type="text" class="form-control" id="name" ng-model="restaurant.name" required max="100"/>
+        </div>
+        <div class="form-group">
+            <label for="city">Location (City, State)</label>
+            <input type="text" placeholder="City Name, State" class="form-control" id="city"
+                   ng-model="restaurant.city"
+                   uib-typeahead="city for city in restaurantForm.getCities($viewValue) | limitTo:10"
+                   typeahead-editable="true" typeahead-min-length="2"
+                   typeahead-loading="loading" typeahead-no-results="noResults"/>
+            <i ng-if="loading" class="glyphicon glyphicon-refresh"></i>
+            <div ng-if="noResults">
+                <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">OK</button>
+        <a class="btn btn-warning" ng-click="restaurantForm.cancel()">Cancel</a>
+    </div>
+</form>
