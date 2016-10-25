@@ -5,8 +5,8 @@
         controllerAs: 'restaurantView'
     });
 
-    controller.$inject = ['$routeParams', 'RestaurantService', 'ReviewService', '$uibModal'];
-    function controller($routeParams, RestaurantService, ReviewService, $uibModal) {
+    controller.$inject = ['$routeParams', 'RestaurantService', 'ReviewService', '$uibModal', '$account'];
+    function controller($routeParams, RestaurantService, ReviewService, $uibModal, $account) {
         var vm = angular.extend(this, {
             $onInit: $onInit,
             addNewReview: addNewReview,
@@ -15,12 +15,12 @@
             reviews: []
         });
 
+        vm.$account = $account;
+
         var restaurantId = $routeParams.id;
 
         function $onInit() {
-            if ($routeParams.id) {
-                getRestaurant();
-            }
+            if (restaurantId) getRestaurant();
         }
 
         function getRestaurant() {

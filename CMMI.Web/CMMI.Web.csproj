@@ -254,6 +254,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="App_Data\Auth.mdf" />
+    <Content Include="App_Data\Auth_log.ldf">
+      <DependentUpon>Auth.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\CMMI.mdf" />
     <Content Include="App_Data\CMMI_log.ldf">
       <DependentUpon>CMMI.mdf</DependentUpon>

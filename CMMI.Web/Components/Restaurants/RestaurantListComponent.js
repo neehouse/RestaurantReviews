@@ -5,10 +5,9 @@
         controllerAs: 'restaurantList'
     });
 
-    controller.$inject = ['RestaurantService', '$uibModal', '$location'];
-    function controller(RestaurantService, $uibModal, $location) {
+    controller.$inject = ['RestaurantService', '$uibModal', '$location', '$account'];
+    function controller(RestaurantService, $uibModal, $location, $account) {
         var vm = angular.extend(this, {
-            $onInit: $onInit,
             getCities: getCities,
             citySelected: citySelected,
             addNewRestaurant: addNewRestaurant,
@@ -18,8 +17,7 @@
             noResults: false
         });
 
-        function $onInit() {
-        }
+        vm.$account = $account;
 
         function getCities(search) {
             return RestaurantService.getCities(search)

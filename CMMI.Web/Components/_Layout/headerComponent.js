@@ -5,13 +5,27 @@
         controllerAs: 'header'
     });
 
-    controller.$inject = ['accountService', '$location', '$user'];
+    controller.$inject = ['accountService', '$location', '$account', '$uibModal', '$route'];
 
-    function controller(accountService, $location, $user) {
+    function controller(accountService, $location, $account, $uibModal, $route) {
         var vm = angular.extend(this, {
             logout: logout,
-            $user: $user
+            register: register
         });
+
+        vm.$account = $account;
+
+        function register() {
+            var modal = $uibModal.open({
+                component: 'register'
+            });
+
+            modal.result.then(function(value) {
+                $route.reload();
+            }, function(value) {
+
+            });
+        }
 
         function logout() {
             accountService.logout()

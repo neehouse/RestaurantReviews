@@ -14,7 +14,7 @@ namespace CMMI.Business
     {
         public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = false)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var query = ctx.Restaurants.Where(x => x.Id == id);
 
@@ -30,7 +30,7 @@ namespace CMMI.Business
 
         public async Task<IEnumerable<ReviewViewModel>> GetRestaurantReviews(int id, bool approvedOnly = true)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Restaurants.FindAsync(id);
 
@@ -48,7 +48,7 @@ namespace CMMI.Business
 
         public async Task<IEnumerable<RestaurantViewModel>> GetRestaurantsByCity(string city, bool approvedOnly = true)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var query = ctx.Restaurants.Where(x => x.City == city);
 
@@ -62,7 +62,7 @@ namespace CMMI.Business
 
         public async Task<IEnumerable<string>> GetCityTypeAhead(string search)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 return await ctx.Restaurants
                     .Where(x => x.Approved && x.City.StartsWith(search))
@@ -74,7 +74,7 @@ namespace CMMI.Business
 
         public async Task<RestaurantViewModel> Create(RestaurantBindingModel restaurant)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = ctx.Restaurants.Create();
                 entity.Name = restaurant.Name;
@@ -94,7 +94,7 @@ namespace CMMI.Business
 
         public async Task<RestaurantViewModel> Update(int id, RestaurantBindingModel restaurant)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Restaurants.FindAsync(id);
 
@@ -116,7 +116,7 @@ namespace CMMI.Business
 
         public async Task Remove(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Restaurants.FindAsync(id);
 
@@ -129,7 +129,7 @@ namespace CMMI.Business
 
         public async Task Approve(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Restaurants.FindAsync(id);
 
@@ -142,7 +142,7 @@ namespace CMMI.Business
 
         public async Task Reject(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Restaurants.FindAsync(id);
 

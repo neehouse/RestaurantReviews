@@ -2,11 +2,27 @@
     app.component('register', {
         templateUrl: '/components/account/register.html',
         controller: controller,
-        controllerAs: 'register'
+        controllerAs: 'register',
+        bindings: {
+            resolve: '<',
+            close: '&',
+            dismiss: '&'
+        }
     });
 
-    controller.$inject = [];
-    function controller() {
+    controller.$inject = ['accountService'];
+    function controller(accountService) {
+        var vm = angular.extend(this, {
+            submit: submit,
+            cancel: cancel
+        });
 
+        function submit(user) {
+            accountService.register(user);
+        }
+
+        function cancel() {
+            vm.dismiss({ $value: 'cancel' });
+        }
     }
 })();

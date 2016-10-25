@@ -2,11 +2,11 @@
 (function () {
     app = angular.module('CMMI.Restaurants', ['ngRoute', 'ui.bootstrap']);
 
-    app.constant('$user', null);
+    app.constant('$account', { $user: null });
 
     app.factory('securityInterceptor', interceptor);
-    interceptor.$inject = ['$q', '$user', '$location'];
-    function interceptor($q, $user, $location) {
+    interceptor.$inject = ['$q', '$account', '$location'];
+    function interceptor($q, $account, $location) {
         return {
             request: request,
             response: response,
@@ -15,8 +15,8 @@
 
         function request(config) {
             config.headers = config.headers || {};
-            if ($user && $user.access_token) {
-                config.headers.Authorization = $user.token_type + ' ' + $user.access_token;
+            if ($account.$user && $account.$user.access_token) {
+                config.headers.Authorization = $account.$user.token_type + ' ' + $account.$user.access_token;
             }
             return config;
         }
@@ -73,10 +73,10 @@
             .when('/user/:id', {
                 template: '<user-view></user-view>'
             })
-            //.otherwise({
-            //    redirectTo: '/restaurant' 
-            //})
-            ;
+        //.otherwise({
+        //    redirectTo: '/restaurant' 
+        //})
+        ;
 
         $httpProvider.interceptors.push('securityInterceptor');
     }

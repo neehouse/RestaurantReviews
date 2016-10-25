@@ -54,7 +54,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CMMI" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="CMMIContainer" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CMMIContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Restaurants" EntityType="CMMI.Restaurant" />
           <EntitySet Name="Reviews" EntityType="CMMI.Review" />
           <AssociationSet Name="RestaurantReview" Association="CMMI.RestaurantReview">
@@ -106,7 +106,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CMMIStoreContainer" CdmEntityContainer="CMMIContainer">
+  <EntityContainerMapping StorageEntityContainer="CMMIStoreContainer" CdmEntityContainer="CMMIContext">
     <EntitySetMapping Name="Restaurants">
       <EntityTypeMapping TypeName="IsTypeOf(CMMI.Restaurant)">
         <MappingFragment StoreEntitySet="Restaurants">

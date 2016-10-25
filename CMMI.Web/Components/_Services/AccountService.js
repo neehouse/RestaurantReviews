@@ -1,11 +1,10 @@
 ﻿(function () {
     app.service('accountService', service);
 
-    service.$inject = ['$rootScope', '$http', '$user'];
-    function service($rootScope, $http, $user) {
+    service.$inject = ['$rootScope', '$http', '$account'];
+    function service($rootScope, $http, $account) {
         var anonymous = {
-            username: 'Anonymous',
-            anonymous: true
+            userName: 'Anonymous'
         };
 
         $init();
@@ -18,13 +17,24 @@
         };
 
         function $init() {
-            $rootScope.$on('security.unauthorized', function(data) {
-                $user = null;
+            $rootScope.$on('security.unauthorized', function (data) {
+                $account.$user = null;
             });
+            window.onbeforeunload = saveAccount;
+            loadAccount();
+        }
+
+        function loadAccount() {
+            $account.$user = JSON.parse(sessionStorage.getItem('$user'));
+            sessionStorage.removeItem('$user');
+        }
+
+        function saveAccount(e) {
+            if ($account.$user) sessionStorage.setItem('$user', JSON.stringify($account.$user));
         }
 
         function current() {
-            return $user || anonymous;
+            return $account.$user || anonymous;
         }
 
         function login(credentials) {
@@ -34,9 +44,9 @@
 
             var promise = $http({ method: 'POST', url: '/token', data: data });
 
-            promise.then(function(response) {
-                $user = response.data;
-            }, function(response) {
+            promise.then(function (response) {
+                $account.$user = response.data;
+            }, function (response) {
 
             });
 
@@ -50,16 +60,24 @@
             return str.join("&");
         }
 
-        function register(data) {
-            
+        function register(user) {
+            var promise = $http.post('/api/account/register');
+
+            promise.then(function (response) {
+                login({ userName: user.email, password: user.password });
+            }, function (response) {
+
+            });
+
+            return promise;
         }
 
         function logout() {
             var promise = $http.post('/api/account/logout');
 
-            promise.then(function() {
-                $user = null;
-            }, function() {
+            promise.then(function () {
+                $account.$user = null;
+            }, function () {
                 // handle logout error.
             });
 

@@ -10,9 +10,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-if="!header.$user"><a ng-href="/account/login">Login</a></li>
-                <li ng-if="!header.$user"><a ng-href="/account/register">Register</a></li>
-                <li ng-if="header.$user"><a href ng-click="header.logout()">Logout</a></li>
+                <li ng-if="!header.$account.$user"><a ng-href="/account/login">Login</a></li>
+                <li ng-if="!header.$account.$user"><a href ng-click="header.register()">Register</a></li>
+                <li ng-if="header.$account.$user"><a href ng-click="header.logout()">Logout</a></li>
             </ul>
         </div>
     </div>

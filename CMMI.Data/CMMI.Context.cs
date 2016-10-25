@@ -13,10 +13,10 @@ namespace CMMI.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CMMIContainer : DbContext
+    public partial class CMMIContext : DbContext
     {
-        public CMMIContainer()
-            : base("name=CMMIContainer")
+        public CMMIContext()
+            : base("name=CMMIContext")
         {
         }
     

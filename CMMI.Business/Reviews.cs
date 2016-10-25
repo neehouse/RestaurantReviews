@@ -14,7 +14,7 @@ namespace CMMI.Business
     {
         public async Task<ReviewViewModel> GetReview(int id, bool approvedOnly = true)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var query = ctx.Reviews.Where(x => x.Id == id);
 
@@ -30,7 +30,7 @@ namespace CMMI.Business
 
         public async Task<IEnumerable<ReviewViewModel>> GetUserReviews(Guid userGuid, bool approvedOnly = true)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var query = ctx.Reviews
                     .Where(x => x.UserGuid == userGuid);
@@ -45,7 +45,7 @@ namespace CMMI.Business
 
         public async Task<ReviewViewModel> Create(ReviewBindingModel review)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = ctx.Reviews.Create();
 
@@ -64,7 +64,7 @@ namespace CMMI.Business
 
         public async Task<ReviewViewModel> Update(int id, ReviewBindingModel review)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Reviews.FindAsync(id);
 
@@ -82,7 +82,7 @@ namespace CMMI.Business
 
         public async Task Remove(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Reviews.FindAsync(id);
 
@@ -95,7 +95,7 @@ namespace CMMI.Business
 
         public async Task Approve(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Reviews.FindAsync(id);
 
@@ -108,7 +108,7 @@ namespace CMMI.Business
    
         public async Task Reject(int id)
         {
-            using (var ctx = new CMMIContainer())
+            using (var ctx = new CMMIContext())
             {
                 var entity = await ctx.Reviews.FindAsync(id);
 
