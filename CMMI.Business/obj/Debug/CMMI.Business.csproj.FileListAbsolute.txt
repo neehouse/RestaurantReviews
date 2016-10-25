@@ -20,3 +20,5 @@ C:\devsource\CMMI\CMMI.Business\bin\Debug\System.Web.Http.dll
 C:\devsource\CMMI\CMMI.Business\bin\Debug\Newtonsoft.Json.xml
 C:\devsource\CMMI\CMMI.Business\bin\Debug\System.Net.Http.Formatting.xml
 C:\devsource\CMMI\CMMI.Business\bin\Debug\System.Web.Http.xml
+C:\devsource\CMMI\CMMI.Business\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\devsource\CMMI\CMMI.Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml

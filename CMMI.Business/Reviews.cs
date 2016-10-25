@@ -10,7 +10,7 @@ using CMMI.Data;
 
 namespace CMMI.Business
 {
-    public class Reviews
+    public class Reviews : IdentityBase
     {
         public async Task<ReviewViewModel> GetReview(int id, bool approvedOnly = true)
         {
@@ -49,12 +49,13 @@ namespace CMMI.Business
             {
                 var entity = ctx.Reviews.Create();
 
-                entity.UserGuid = Guid.NewGuid();
+                entity.UserGuid = CurrentUserGuid;
 
                 entity.Rating = review.Rating;
                 entity.Comment = review.Comment;
 
                 entity.CreateDate = DateTime.Now;
+
                 ctx.Reviews.Add(entity);
                 await ctx.SaveChangesAsync();
 
@@ -70,10 +71,9 @@ namespace CMMI.Business
 
                 if (entity == null) throw new NotFoundException("Review not found.");
 
-                entity.UserGuid = Guid.NewGuid();
-
                 entity.Rating = review.Rating;
-                entity.CreateDate = DateTime.Now;
+                entity.Comment = review.Comment;
+
                 await ctx.SaveChangesAsync();
 
                 return new ReviewViewModel(entity);

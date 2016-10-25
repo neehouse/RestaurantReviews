@@ -10,7 +10,7 @@ using CMMI.Data;
 
 namespace CMMI.Business
 {
-    public class Restaurants
+    public class Restaurants: IdentityBase
     {
         public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = false)
         {
@@ -80,7 +80,7 @@ namespace CMMI.Business
                 entity.Name = restaurant.Name;
                 entity.City = restaurant.City;
 
-                entity.UserGuid = Guid.NewGuid();
+                entity.UserGuid = CurrentUserGuid;
 
                 entity.Rating = 0;
                 entity.ReviewCount = 0;
@@ -103,11 +103,6 @@ namespace CMMI.Business
                 entity.Name = restaurant.Name;
                 entity.City = restaurant.City;
 
-                entity.UserGuid = Guid.NewGuid();
-
-                entity.Rating = 0;
-                entity.ReviewCount = 0;
-                entity.CreateDate = DateTime.Now;
                 await ctx.SaveChangesAsync();
 
                 return new RestaurantViewModel(entity);

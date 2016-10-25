@@ -56,7 +56,6 @@ namespace CMMI.Web.Controllers
             return Ok(restaurant);
         }
 
-        [AllowAnonymous]
         [Route("api/restaurant"), HttpPost]
         // POST: api/Restaurant
         public async Task<IHttpActionResult> Post([FromBody] RestaurantBindingModel restaurant)
