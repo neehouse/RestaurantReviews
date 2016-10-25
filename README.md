@@ -25,10 +25,14 @@ Have fun.
 Developer Notes
 ===============
 
-General
+General Comments
+---------------
 1. For larger projects, I would use IoC containers to do injection.  I wired the API Controllers to use the default constructor in a similar structure, but with direct references.
-2. Unit Tests - Coming soon.
-4. Should implement UnitOfWork for EF.
+2. Unit Tests - coming.
+3. UI Tests - coming.
+4. Should implement UnitOfWork for EF to allow for transactional support.
+5. Auth is currently in a separate database.  This makes the fetching of User info difficult.  Need to merge or have a userProfile table with user's name.
+6. I would not normally use integer based ID's at the api/client level.  For best database performance, integers are used for keys/foreign keys.  I believe these should be 'encoded' somehow to obfuscate the incremental nature.
 
 CMMI.Web
 ---------------
@@ -37,8 +41,9 @@ CMMI.Web
 ** Rather than implementing try/catch blocks for each exception type in the API methods, The WebApi config allows for the replacement of the Exception Handler, as such, it looks at the exception type, and determines the correct statusCode.  See the Exceptions folder in CMMI.Business
 *** NotFoundException
 *** InvalidPermissionsException
+*** Server Error.
 *** Etc.
 
 CMMI.Business
 ---------------
-* Business has view models that are delivered to the api.  The Business layer works with the entities, and they and the context are not exposed to the API. 
+* Business has view models that are delivered to the api.  The Business layer works with the entities, and entities and the context are not exposed down to the API. 
