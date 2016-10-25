@@ -28,13 +28,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="restaurant in restaurantList.restaurants">
-                    <td>
-                        <a href="restaurant/{{restaurant.Id}}">{{restaurant.Name}}</a>
-                        <span class="badge">Rated {{restaurant.Rating | number:2}}/5.00 by {{restaurant.ReviewCount}} users</span>
-                    </td>
-                    <td>{{restaurant.City}}</td>
-                </tr>
+            <tr ng-repeat-start="group in restaurantList.restaurants">
+                <td colspan="2"><h4>{{group.City}}</h4></td>
+            </tr>
+            <tr ng-repeat-end ng-repeat="restaurant in group.Restaurants">
+                <td>
+                    <a href="restaurant/{{restaurant.Id}}">{{restaurant.Name}}</a>
+                    <span class="badge">Rated {{restaurant.Rating | number:2}}/5.00 by {{restaurant.ReviewCount}} users</span>
+                </td>
+                <td>{{restaurant.City}}</td>
+            </tr>
             </tbody>
         </table>
     </div>

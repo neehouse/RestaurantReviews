@@ -10,7 +10,7 @@ using CMMI.Data;
 
 namespace CMMI.Business
 {
-    public class Restaurants: IdentityBase
+    public class Restaurants : IdentityBase
     {
         public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = false)
         {
@@ -43,6 +43,28 @@ namespace CMMI.Business
                 var results = await query.ToListAsync();
 
                 return results.Select(x => new ReviewViewModel(x));
+            }
+        }
+
+        public async Task<IEnumerable<RestaurantCityViewModel>> GetRestaurantsGroupedByCity(string city, bool approvedOnly = true)
+        {
+            using (var ctx = new CMMIContext())
+            {
+                var query = ctx.Restaurants.AsQueryable();
+
+                if (city != null) query = query.Where(x => x.City == city);
+
+                if (approvedOnly) query = query.Where(x => x.Approved);
+
+                var results = await query.OrderBy(x => x.City).ToListAsync();
+
+                return results
+                    .GroupBy(x => x.City)
+                    .Select(x => new RestaurantCityViewModel
+                    {
+                        City = x.Key,
+                        Restaurants = x.Select(y => new RestaurantViewModel(y))
+                    });
             }
         }
 

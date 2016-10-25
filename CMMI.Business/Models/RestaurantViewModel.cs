@@ -4,6 +4,12 @@ using CMMI.Data;
 
 namespace CMMI.Business.Models
 {
+    public class RestaurantCityViewModel
+    {
+        public string City { get; set; }
+        public IEnumerable<RestaurantViewModel> Restaurants { get; set; } 
+    }
+
     public class RestaurantViewModel
     {
         public RestaurantViewModel(Restaurant restaurant)

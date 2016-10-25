@@ -8,6 +8,7 @@
     controller.$inject = ['RestaurantService', '$uibModal', '$location', '$account'];
     function controller(RestaurantService, $uibModal, $location, $account) {
         var vm = angular.extend(this, {
+            $onInit: $onInit,
             getCities: getCities,
             citySelected: citySelected,
             addNewRestaurant: addNewRestaurant,
@@ -18,6 +19,11 @@
         });
 
         vm.$account = $account;
+        vm.city = null;
+
+        function $onInit() {
+            citySelected();
+        }
 
         function getCities(search) {
             return RestaurantService.getCities(search)

@@ -23,9 +23,9 @@ namespace CMMI.Web.Controllers
         [AllowAnonymous]
         [Route("api/restaurant"), HttpGet]
         // GET: api/Restaurant
-        public async Task<IHttpActionResult> Get(string city)
+        public async Task<IHttpActionResult> Get(string city = null)
         {
-            var restaurants = await _Restaurants.GetRestaurantsByCity(city);
+            var restaurants = await _Restaurants.GetRestaurantsGroupedByCity(city);
             return Ok(restaurants);
         }
 
