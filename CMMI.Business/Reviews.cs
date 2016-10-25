@@ -59,6 +59,8 @@ namespace CMMI.Business
                 ctx.Reviews.Add(entity);
                 await ctx.SaveChangesAsync();
 
+                await UpdateRestaurantReviewDetails(ctx, entity.Restaurant);
+
                 return new ReviewViewModel(entity);
             }
         }
@@ -76,8 +78,20 @@ namespace CMMI.Business
 
                 await ctx.SaveChangesAsync();
 
+                await UpdateRestaurantReviewDetails(ctx, entity.Restaurant);
+
                 return new ReviewViewModel(entity);
             }
+        }
+
+        public async Task UpdateRestaurantReviewDetails(CMMIContext ctx, Restaurant restaurant)
+        {
+            var restaurantReviews = restaurant.Reviews.Where(x => x.Approved).ToList();
+
+            restaurant.Rating = restaurantReviews.Average(x => x.Rating);
+            restaurant.ReviewCount = (short)restaurantReviews.Count();
+
+            await ctx.SaveChangesAsync();
         }
 
         public async Task Remove(int id)
@@ -89,7 +103,10 @@ namespace CMMI.Business
                 if (entity == null) throw new NotFoundException("Review not found.");
 
                 ctx.Reviews.Remove(entity);
+
                 await ctx.SaveChangesAsync();
+
+                await UpdateRestaurantReviewDetails(ctx, entity.Restaurant);
             }
         }
 
@@ -102,7 +119,10 @@ namespace CMMI.Business
                 if (entity == null) throw new NotFoundException("Review not found.");
 
                 entity.Approved = true;
+
                 await ctx.SaveChangesAsync();
+
+                await UpdateRestaurantReviewDetails(ctx, entity.Restaurant);
             }
         }
    
@@ -115,7 +135,10 @@ namespace CMMI.Business
                 if (entity == null) throw new NotFoundException("Review not found.");
 
                 entity.Approved = false;
+
                 await ctx.SaveChangesAsync();
+
+                await UpdateRestaurantReviewDetails(ctx, entity.Restaurant);
             }
         }
     }
