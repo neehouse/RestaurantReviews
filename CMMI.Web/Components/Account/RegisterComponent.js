@@ -18,7 +18,9 @@
         });
 
         function submit(user) {
-            accountService.register(user);
+            accountService.register(user).then(function() {
+                vm.close();
+            });
         }
 
         function cancel() {

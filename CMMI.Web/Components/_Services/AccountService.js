@@ -61,10 +61,10 @@
         }
 
         function register(user) {
-            var promise = $http.post('/api/account/register');
+            var promise = $http.post('/api/account/register', { Email: user.userName, Password: user.password, ConfirmPassword: user.confirmPassword});
 
             promise.then(function (response) {
-                login({ userName: user.email, password: user.password });
+                login({ userName: user.userName , password: user.password });
             }, function (response) {
 
             });
