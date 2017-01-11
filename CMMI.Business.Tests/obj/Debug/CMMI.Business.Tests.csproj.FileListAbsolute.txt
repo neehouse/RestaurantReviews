@@ -10,3 +10,9 @@ C:\devsource\CMMI\CMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.QualityTo
 C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.dll
 C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.pdb
 C:\devsource\CMMI\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.csprojResolveAssemblyReference.cache
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\bin\Debug\CMMI.Business.Tests.dll
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\bin\Debug\CMMI.Business.Tests.pdb
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.csprojResolveAssemblyReference.cache
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.dll
+C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.pdb

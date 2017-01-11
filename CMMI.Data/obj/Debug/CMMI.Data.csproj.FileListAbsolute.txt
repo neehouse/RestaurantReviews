@@ -18,3 +18,13 @@ C:\devsource\CMMI\CMMI.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\devsource\CMMI\CMMI.Data\obj\Debug\CMMI.Data.dll
 C:\devsource\CMMI\CMMI.Data\obj\Debug\CMMI.Data.pdb
 C:\devsource\CMMI\CMMI.Data\obj\Debug\CMMI.Data.csprojResolveAssemblyReference.cache
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\CMMI.Data.dll.config
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\CMMI.Data.dll
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\CMMI.Data.pdb
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\EntityFramework.dll
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\EntityFramework.xml
+C:\Repos\RestaurantReviews\CMMI.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Repos\RestaurantReviews\CMMI.Data\obj\Debug\CMMI.Data.csprojResolveAssemblyReference.cache
+C:\Repos\RestaurantReviews\CMMI.Data\obj\Debug\CMMI.Data.dll
+C:\Repos\RestaurantReviews\CMMI.Data\obj\Debug\CMMI.Data.pdb
