@@ -12,7 +12,7 @@ namespace CMMI.Business
 {
     public class Restaurants : IdentityBase
     {
-        public async Task<RestaurantViewModel> GetRestaurant(int id, bool approvedOnly = false)
+        public async Task<RestaurantViewModel> GetRestaurant(long id, bool approvedOnly = false)
         {
             using (var ctx = new CMMIContext())
             {
@@ -28,23 +28,23 @@ namespace CMMI.Business
             }
         }
 
-        public async Task<IEnumerable<ReviewViewModel>> GetRestaurantReviews(int id, bool approvedOnly = true)
-        {
-            using (var ctx = new CMMIContext())
-            {
-                var entity = await ctx.Restaurants.FindAsync(id);
+        //public async Task<IEnumerable<ReviewViewModel>> GetRestaurantReviews(long id, bool approvedOnly = true)
+        //{
+        //    using (var ctx = new CMMIContext())
+        //    {
+        //        var entity = await ctx.Restaurants.FindAsync(id);
 
-                if (entity == null) throw new NotFoundException("Restaurant not found.");
+        //        if (entity == null) throw new NotFoundException("Restaurant not found.");
 
-                var query = ctx.Reviews.Where(x => x.RestaurantId == id);
+        //        var query = ctx.Reviews.Where(x => x.RestaurantId == id);
 
-                if (approvedOnly) query = query.Where(x => x.Approved);
+        //        if (approvedOnly) query = query.Where(x => x.Approved);
 
-                var results = await query.ToListAsync();
+        //        var results = await query.ToListAsync();
 
-                return results.Select(x => new ReviewViewModel(x));
-            }
-        }
+        //        return results.Select(x => new ReviewViewModel(x));
+        //    }
+        //}
 
         public async Task<IEnumerable<RestaurantCityViewModel>> GetRestaurantsGroupedByCity(string city, bool approvedOnly = true)
         {
@@ -114,7 +114,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task<RestaurantViewModel> Update(int id, RestaurantBindingModel restaurant)
+        public async Task<RestaurantViewModel> Update(long id, RestaurantBindingModel restaurant)
         {
             using (var ctx = new CMMIContext())
             {
@@ -131,7 +131,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task Remove(int id)
+        public async Task Remove(long id)
         {
             using (var ctx = new CMMIContext())
             {
@@ -144,7 +144,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task Approve(int id)
+        public async Task Approve(long id)
         {
             using (var ctx = new CMMIContext())
             {
@@ -157,7 +157,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task Reject(int id)
+        public async Task Reject(long id)
         {
             using (var ctx = new CMMIContext())
             {

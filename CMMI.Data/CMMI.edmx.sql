@@ -37,7 +37,7 @@ GO
 
 -- Creating table 'Restaurants'
 CREATE TABLE [dbo].[Restaurants] (
-    [Id] int IDENTITY(1,1) NOT NULL,
+    [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(100)  NOT NULL,
     [City] nvarchar(100)  NOT NULL,
     [Rating] smallint  NOT NULL,
@@ -50,8 +50,8 @@ GO
 
 -- Creating table 'Reviews'
 CREATE TABLE [dbo].[Reviews] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [RestaurantId] int  NOT NULL,
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [RestaurantId] bigint  NOT NULL,
     [Rating] smallint  NOT NULL,
     [Comment] nvarchar(2000)  NOT NULL,
     [Approved] bit  NOT NULL,

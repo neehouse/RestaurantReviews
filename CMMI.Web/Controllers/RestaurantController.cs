@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using CMMI.Business;
 using CMMI.Business.Models;
+using CMMI.Business.Types;
 using Microsoft.ApplicationInsights.WindowsServer;
 
 namespace CMMI.Web.Controllers
@@ -14,85 +15,76 @@ namespace CMMI.Web.Controllers
     [Authorize]
     public class RestaurantController : BaseApiController
     {
-        private readonly Restaurants _Restaurants;
+        private readonly Restaurants _restaurants;
         public RestaurantController()
         {
-            _Restaurants = new Restaurants();
+            _restaurants = new Restaurants();
         }
 
         [AllowAnonymous]
-        [Route("api/restaurant"), HttpGet]
+        [Route("api/restaurants"), HttpGet]
         // GET: api/Restaurant
         public async Task<IHttpActionResult> Get(string city = null)
         {
-            var restaurants = await _Restaurants.GetRestaurantsGroupedByCity(city);
+            var restaurants = await _restaurants.GetRestaurantsGroupedByCity(city);
             return Ok(restaurants);
         }
 
         [AllowAnonymous]
-        [Route("api/restaurant/cities"), HttpGet]
+        [Route("api/restaurants/cities"), HttpGet]
         // GET: api/Restaurant
         public async Task<IHttpActionResult> GetCities(string search)
         {
-            var cities = await _Restaurants.GetCityTypeAhead(search);
+            var cities = await _restaurants.GetCityTypeAhead(search);
             return Ok(cities);
         }
 
         [AllowAnonymous]
-        [Route("api/restaurant/{id}"), HttpGet]
+        [Route("api/restaurants/{restaurantId}"), HttpGet]
         // GET: api/Restaurant/5
-        public async Task<IHttpActionResult> Get(int id)
+        public async Task<IHttpActionResult> Get(ApiId restaurantId)
         {
-            var restaurant = await _Restaurants.GetRestaurant(id);
+            var restaurant = await _restaurants.GetRestaurant(restaurantId);
             return Ok(restaurant);
         }
 
-        [AllowAnonymous]
-        [Route("api/restaurant/{id}/reviews"), HttpGet]
-        // GET: api/Restaurant/5/Reviews
-        public async Task<IHttpActionResult> GetReviews(int id)
-        {
-            var restaurant = await _Restaurants.GetRestaurantReviews(id);
-            return Ok(restaurant);
-        }
-
-        [Route("api/restaurant"), HttpPost]
+        [Route("api/restaurants"), HttpPost]
         // POST: api/Restaurant
         public async Task<IHttpActionResult> Post([FromBody] RestaurantBindingModel restaurant)
         {
-            var created = await _Restaurants.Create(restaurant);
-            return Created("api/Restaurant/" + created.Id, created);
+            var created = await _restaurants.Create(restaurant);
+            return Created("api/restaurants/" + created.Id, created);
         }
 
-        [Route("api/restaurant/{id}"), HttpPut]
+        [Route("api/restaurants/{restaurantId}"), HttpPut]
         // PUT: api/Restaurant/5
-        public async Task<IHttpActionResult> Put(int id, [FromBody] RestaurantBindingModel restaurant)
+        public async Task<IHttpActionResult> Put(ApiId restaurantId, [FromBody] RestaurantBindingModel restaurant)
         {
-            var created = await _Restaurants.Update(id, restaurant);
+            var created = await _restaurants.Update(restaurantId, restaurant);
             return Ok(created);
         }
 
-        [Route("api/restaurant/{id}"), HttpDelete]
+        [Route("api/restaurants/{restaurantId}"), HttpDelete]
         // DELETE: api/Restaurant/5
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<IHttpActionResult> Delete(ApiId restaurantId)
         {
-            await _Restaurants.Remove(id);
+            await _restaurants.Remove(restaurantId);
             return StatusCode(HttpStatusCode.Gone);
         }
 
-        [Route("api/restaurant/{id}/approve"), HttpPost]
+        [Route("api/restaurants/{restaurantId}/approve"), HttpPost]
         // PUT: api/Restaurant/5/approve
-        public async Task<IHttpActionResult> Approve(int id)
+        public async Task<IHttpActionResult> Approve(ApiId restaurantId)
         {
-            await _Restaurants.Approve(id);
+            await _restaurants.Approve(restaurantId);
             return Ok();
         }
 
-        [Route("api/restaurant/{id}/reject"), HttpPost]
+        [Route("api/restaurants/{restaurantId}/reject"), HttpPost]
         // PUT: api/Restaurant/5/approve
-        public async Task<IHttpActionResult> Reject(int id)
+        public async Task<IHttpActionResult> Reject(ApiId restaurantId)
         {
-            await _Restaurants.Reject(id);
+            await _restaurants.Reject(restaurantId);
             return Ok();
         }
     }

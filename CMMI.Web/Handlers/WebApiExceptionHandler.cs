@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.ExceptionHandling;
 using CMMI.Business.Exceptions;
@@ -17,10 +19,8 @@ namespace CMMI.Web.Handlers
     {
         public override void Handle(ExceptionHandlerContext context)
         {
-            var exceptionType = context.Exception.GetType();
-
             // Return 404 - Not Found
-            if (exceptionType == typeof(NotFoundException))
+            if (context.Exception is NotFoundException)
             {
                 context.Result = new BaseHttpActionResult(
                     context.Exception.Message,
@@ -31,7 +31,7 @@ namespace CMMI.Web.Handlers
             }
 
             // Return 403 - Forbidden
-            if (exceptionType == typeof(ForbiddenException))
+            if (context.Exception is ForbiddenException)
             {
                 context.Result = new BaseHttpActionResult(
                     context.Exception.Message,
@@ -41,7 +41,23 @@ namespace CMMI.Web.Handlers
                 return;
             }
 
+            // Return 501 - Not Implemented.
+            if (context.Exception is NotImplementedException)
+            {
+                context.Result = new BaseHttpActionResult(
+                    context.Exception.Message,
+                    context.Exception,
+                    context.Request,
+                    HttpStatusCode.NotImplemented);
+                return;
+            }
+
             // add addition exception types here.
+
+
+
+
+
 
             // Return 500 - Server Error (default)
             context.Result = new BaseHttpActionResult(
@@ -50,5 +66,10 @@ namespace CMMI.Web.Handlers
                     context.Request,
                     HttpStatusCode.InternalServerError); ;
         }
+
+        //public Task HandleAsync(ExceptionHandlerContext context, CancellationToken cancellationToken)
+        //{
+        //    return Task.FromResult<>(Handle(context));
+        //}
     }
 }

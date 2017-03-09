@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CMMI.Business.Types;
 using CMMI.Data;
 
 namespace CMMI.Business.Models
@@ -7,7 +8,7 @@ namespace CMMI.Business.Models
     public class RestaurantCityViewModel
     {
         public string City { get; set; }
-        public IEnumerable<RestaurantViewModel> Restaurants { get; set; } 
+        public IEnumerable<RestaurantViewModel> Restaurants { get; set; }
     }
 
     public class RestaurantViewModel
@@ -27,7 +28,7 @@ namespace CMMI.Business.Models
             };
         }
 
-        public int Id { get; set; }
+        public ApiId Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public double Rating { get; set; }

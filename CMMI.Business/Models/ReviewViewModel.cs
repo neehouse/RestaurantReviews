@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CMMI.Business.Types;
 using CMMI.Data;
 
 namespace CMMI.Business.Models
@@ -22,7 +23,7 @@ namespace CMMI.Business.Models
             };
         }
 
-        public int Id { get; set; }
+        public ApiId Id { get; set; }
         public short Rating { get; set; }
         public string Comment { get; set; }
         public System.DateTime CreateDate { get; set; }

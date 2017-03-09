@@ -46,7 +46,8 @@
             var modal = $uibModal.open({
                 component: 'review-form',
                 resolve: {
-                    restaurantId: function () { return restaurantId; }
+                    restaurantId: function () { return restaurantId; },
+                    view: function () { return 'add'; }
                 }
             });
 

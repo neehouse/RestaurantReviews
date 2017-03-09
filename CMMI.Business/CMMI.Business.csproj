@@ -46,6 +46,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
@@ -61,6 +63,9 @@
     <Compile Include="Attributes\ModelStateValidationAttribute.cs" />
     <Compile Include="Exceptions\ForbiddenException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Generics\CompiledPropertyAccessor.cs" />
+    <Compile Include="Generics\Delta.cs" />
+    <Compile Include="Generics\PropertyAccessor.cs" />
     <Compile Include="IdentityBase.cs" />
     <Compile Include="Models\BasicUserViewModel.cs" />
     <Compile Include="Models\RestaurantBindingModel.cs" />
@@ -71,6 +76,7 @@
     <Compile Include="Restaurants.cs" />
     <Compile Include="Models\RestaurantViewModel.cs" />
     <Compile Include="Reviews.cs" />
+    <Compile Include="Types\ApiId.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMMI.Data\CMMI.Data.csproj">

@@ -7,85 +7,94 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using CMMI.Business;
 using CMMI.Business.Models;
+using CMMI.Business.Types;
 
 namespace CMMI.Web.Controllers
 {
     [Authorize]
     public class ReviewsController : BaseApiController
     {
-        private readonly Reviews _Reviews;
+        private readonly Reviews _reviews;
         public ReviewsController()
         {
-            _Reviews = new Reviews();
+            _reviews = new Reviews();
         }
 
         [AllowAnonymous]
-        [Route("api/review/{id}"), HttpGet]
+        [Route("api/reviews/{reviewId}"), HttpGet]
         // GET: api/Reviews/5
-        public async Task<IHttpActionResult> Get(int id)
+        public async Task<IHttpActionResult> GetReview(ApiId reviewId)
         {
-            var review = await _Reviews.GetReview(id);
+            var review = await _reviews.GetReview(reviewId);
 
             return Ok(review);
         }
 
         [AllowAnonymous]
-        [Route("api/user/{userGuid}/reviews"), HttpGet]
+        [Route("api/users/{userGuid}/reviews"), HttpGet]
         // GET: api/Reviews/5
-        public async Task<IHttpActionResult> Get(Guid userGuid)
+        public async Task<IHttpActionResult> GetUserReviews(Guid userGuid)
         {
-            var review = await _Reviews.GetUserReviews(userGuid);
+            var review = await _reviews.GetUserReviews(userGuid);
 
             return Ok(review);
         }
 
         [AllowAnonymous]
-        [Route("api/user/current/reviews"), HttpGet]
+        [Route("api/users/current/reviews"), HttpGet]
         // GET: api/Reviews/5
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> GetUserReviews()
         {
-            var reviews = await _Reviews.GetUserReviews(CurrentUserGuid);
+            return await GetUserReviews(CurrentUserGuid);
+        }
+
+        [AllowAnonymous]
+        [Route("api/restaurants/{restaurantId}/reviews"), HttpGet]
+        // GET: api/Reviews/5
+        public async Task<IHttpActionResult> GetRestaurantReviews(ApiId restaurantId)
+        {
+            var reviews = await _reviews.GetRestaurantReviews(restaurantId);
 
             return Ok(reviews);
         }
 
-        [Route("api/restaurant/{id}/review"), HttpPost]
+        [Route("api/restaurants/{restaurantId}/reviews"), HttpPost]
         // POST: api/Reviews
-        public async Task<IHttpActionResult> Post(int id, [FromBody]ReviewBindingModel review)
+        public async Task<IHttpActionResult> Post(ApiId restaurantId, [FromBody]ReviewBindingModel review)
         {
-            var created = await _Reviews.Create(review);
-            return Created("api/review/" + created.Id, created);
+            var created = await _reviews.Create(restaurantId, review);
+            return Created("api/reviews/" + created.Id, created);
         }
 
-        [Route("api/review/{id}"), HttpPut]
+        [Route("api/reviews/{reviewId}"), HttpPut]
         // PUT: api/Reviews/5
-        public async Task<IHttpActionResult> Put(int id, [FromBody]ReviewBindingModel review)
+        public async Task<IHttpActionResult> Put(ApiId reviewId, [FromBody]ReviewBindingModel review)
         {
-            var result = await _Reviews.Update(id, review);
+            var result = await _reviews.Update(reviewId, review);
             return Ok(result);
         }
 
-        [Route("api/review/{id}"), HttpDelete]
+        [Route("api/reviews/{reviewId}"), HttpDelete]
         // DELETE: api/Restaurant/5
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<IHttpActionResult> Delete(ApiId reviewId)
         {
-            await _Reviews.Remove(id);
+            await _reviews.Remove(reviewId);
             return StatusCode(HttpStatusCode.Gone);
         }
 
-        [Route("api/review/{id}/approve"), HttpPost]
-        // PUT: api/Restaurant/5/approve
-        public async Task<IHttpActionResult> Approve(int id)
+        [Route("api/reviews/{reviewId}/approve"), HttpPost]
+        // POST: api/Restaurant/5/approve
+        public async Task<IHttpActionResult> Approve(ApiId reviewId)
         {
-            await _Reviews.Approve(id);
+            await _reviews.Approve(reviewId);
             return Ok();
         }
 
-        [Route("api/review/{id}/reject"), HttpPost]
-        // PUT: api/Restaurant/5/approve
-        public async Task<IHttpActionResult> Reject(int id)
+        [Route("api/reviews/{reviewId}/reject"), HttpPost]
+        // POST: api/Restaurant/5/reject
+        public async Task<IHttpActionResult> Reject(ApiId reviewId)
         {
-            await _Reviews.Reject(id);
+            await _reviews.Reject(reviewId);
             return Ok();
         }
     }

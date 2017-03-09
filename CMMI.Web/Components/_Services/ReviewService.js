@@ -17,28 +17,28 @@
 
         }
 
-        function getByRestaurant(id) {
-            return $http.get('api/restaurant/' + id + '/reviews');
+        function getByRestaurant(restaurantId) {
+            return $http.get('api/restaurants/' + restaurantId + '/reviews');
         }
 
-        function create(review) {
-
+        function create(restaurantId, review) {
+            return $http.post('api/restaurants/' + restaurantId + '/reviews', review);
         }
 
         function update(id, review) {
-
+            return $http.put('api/reviews/' + id, review);
         }
 
         function remove(id) {
-
+            return $http.delete('api/reviews/' + id);
         }
 
         function approve(id) {
-
+            return $http.post('api/reviews/' + id + '/approve');
         }
 
         function reject(id) {
-
+            return $http.post('api/reviews/' + id + '/reject');
         }
     }
 })();

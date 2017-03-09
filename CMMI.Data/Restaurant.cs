@@ -20,7 +20,7 @@ namespace CMMI.Data
             this.Reviews = new HashSet<Review>();
         }
     
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public double Rating { get; set; }

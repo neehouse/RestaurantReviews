@@ -14,8 +14,8 @@ namespace CMMI.Data
     
     public partial class Review
     {
-        public int Id { get; set; }
-        public int RestaurantId { get; set; }
+        public long Id { get; set; }
+        public long RestaurantId { get; set; }
         public short Rating { get; set; }
         public string Comment { get; set; }
         public bool Approved { get; set; }

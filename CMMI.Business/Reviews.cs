@@ -12,7 +12,7 @@ namespace CMMI.Business
 {
     public class Reviews : IdentityBase
     {
-        public async Task<ReviewViewModel> GetReview(int id, bool approvedOnly = true)
+        public async Task<ReviewViewModel> GetReview(long id, bool approvedOnly = true)
         {
             using (var ctx = new CMMIContext())
             {
@@ -43,7 +43,22 @@ namespace CMMI.Business
             }
         }
 
-        public async Task<ReviewViewModel> Create(ReviewBindingModel review)
+        public async Task<IEnumerable<ReviewViewModel>> GetRestaurantReviews(long restaurantId, bool approvedOnly = true)
+        {
+            using (var ctx = new CMMIContext())
+            {
+                var query = ctx.Reviews
+                    .Where(x => x.RestaurantId == restaurantId);
+
+                if (approvedOnly) query = query.Where(x => x.Approved);
+
+                var enties = await query.ToListAsync();
+
+                return enties.Select(x => new ReviewViewModel(x));
+            }
+        }
+
+        public async Task<ReviewViewModel> Create(long restaurantId ,ReviewBindingModel review)
         {
             using (var ctx = new CMMIContext())
             {
@@ -51,6 +66,7 @@ namespace CMMI.Business
 
                 entity.UserGuid = CurrentUserGuid;
 
+                entity.RestaurantId = restaurantId;
                 entity.Rating = review.Rating;
                 entity.Comment = review.Comment;
 
@@ -65,7 +81,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task<ReviewViewModel> Update(int id, ReviewBindingModel review)
+        public async Task<ReviewViewModel> Update(long id, ReviewBindingModel review)
         {
             using (var ctx = new CMMIContext())
             {
@@ -88,13 +104,16 @@ namespace CMMI.Business
         {
             var restaurantReviews = restaurant.Reviews.Where(x => x.Approved).ToList();
 
-            restaurant.Rating = restaurantReviews.Average(x => x.Rating);
-            restaurant.ReviewCount = (short)restaurantReviews.Count();
+            if (restaurantReviews.Any())
+            {
+                restaurant.Rating = restaurantReviews.Average(x => x.Rating);
+                restaurant.ReviewCount = (short) restaurantReviews.Count();
 
-            await ctx.SaveChangesAsync();
+                await ctx.SaveChangesAsync();
+            }
         }
 
-        public async Task Remove(int id)
+        public async Task Remove(long id)
         {
             using (var ctx = new CMMIContext())
             {
@@ -110,7 +129,7 @@ namespace CMMI.Business
             }
         }
 
-        public async Task Approve(int id)
+        public async Task Approve(long id)
         {
             using (var ctx = new CMMIContext())
             {
@@ -126,7 +145,7 @@ namespace CMMI.Business
             }
         }
    
-        public async Task Reject(int id)
+        public async Task Reject(long id)
         {
             using (var ctx = new CMMIContext())
             {

@@ -10,14 +10,15 @@
         }
     });
 
-    controller.$inject = [];
-    function controller() {
+    controller.$inject = ['ReviewService'];
+    function controller(ReviewService) {
         var vm = angular.extend(this, {
             submit: submit,
             cancel: cancel
         });
 
         function submit(review) {
+            ReviewService.create(this.resolve.restaurantId, review);
             //vm.resolve.restaurantId;
             vm.close({ $value: review });
         }

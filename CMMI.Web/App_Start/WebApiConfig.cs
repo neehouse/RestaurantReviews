@@ -28,7 +28,7 @@ namespace CMMI.Web
             config.Filters.Add(new ModelStateValidationAttribute());
 
             // Restful Exception Handler
-            config.Services.Replace(typeof(IExceptionHandler), new WebApiExceptionHandler());
+//            config.Services.Replace(typeof(IExceptionHandler), new WebApiExceptionHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

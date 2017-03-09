@@ -15,35 +15,35 @@
         };
 
         function get(id) {
-            return $http.get('/api/restaurant/' + id);
+            return $http.get('/api/restaurants/' + id);
         }
 
         function getByCity(city) {
-            return $http.get('/api/restaurant', { params: { city: city } });
+            return $http.get('/api/restaurants', { params: { city: city } });
         }
 
         function getCities(search) {
-            return $http.get('/api/restaurant/cities', { params: { search: search } });
+            return $http.get('/api/restaurants/cities', { params: { search: search } });
         }
 
         function create(restaurant) {
-            return $http.post('/api/restaurant', restaurant);
+            return $http.post('/api/restaurants', restaurant);
         }
 
-        function update(id, review) {
-
+        function update(id, restaurant) {
+            return $http.put('api/restaurants/' + id, restaurant);
         }
 
         function remove(id) {
-            
+            return $http.delete('api/restaurants/' + id);
         }
 
         function approve(id) {
-            
+            return $http.post('api/restaurants/' + id + '/approve');
         }
 
         function reject(id) {
-            
+            return $http.post('api/restaurants/' + id + '/reject');
         }
     }
 })();
