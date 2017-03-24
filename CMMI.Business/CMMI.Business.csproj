@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -77,6 +78,7 @@
     <Compile Include="Models\RestaurantViewModel.cs" />
     <Compile Include="Reviews.cs" />
     <Compile Include="Types\ApiId.cs" />
+    <Compile Include="Types\BaseX.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMMI.Data\CMMI.Data.csproj">

@@ -52,3 +52,4 @@ C:\Repos\RestaurantReviews.git\CMMI.Business\bin\Debug\System.Web.Http.xml
 C:\Repos\RestaurantReviews.git\CMMI.Business\obj\Debug\CMMI.Business.csprojResolveAssemblyReference.cache
 C:\Repos\RestaurantReviews.git\CMMI.Business\obj\Debug\CMMI.Business.dll
 C:\Repos\RestaurantReviews.git\CMMI.Business\obj\Debug\CMMI.Business.pdb
+C:\Repos\RestaurantReviews.git\CMMI.Business\bin\Debug\CMMI.Data.dll.config

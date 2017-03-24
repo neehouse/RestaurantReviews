@@ -16,3 +16,9 @@ C:\Repos\RestaurantReviews\CMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.
 C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.csprojResolveAssemblyReference.cache
 C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.dll
 C:\Repos\RestaurantReviews\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.pdb
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\bin\Debug\CMMI.Business.Tests.dll
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\bin\Debug\CMMI.Business.Tests.pdb
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.csprojResolveAssemblyReference.cache
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.dll
+C:\Repos\RestaurantReviews.git\CMMI.Business.Tests\obj\Debug\CMMI.Business.Tests.pdb

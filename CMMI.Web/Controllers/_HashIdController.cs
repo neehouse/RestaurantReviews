@@ -14,44 +14,49 @@ namespace CMMI.Web.Controllers
     [RoutePrefix("hashid")]
     public class _HashIdController : ApiController
     {
-
-
         [Route("hash/{id}")]
         public IHttpActionResult Get(ApiId id)
         {
-            return Ok((long)id);
+            return Ok(id.Value); // returns long value
         }
 
         [Route("long/{id}")]
         public IHttpActionResult GetString(long id)
         {
-            return Ok((string)(new ApiId(id)));
+            return Ok((new ApiId(id)));  // returns hash string
         }
 
         [Route("object")]
         public IHttpActionResult GetObject()
         {
-            var data = new TestObject
+            var data = new Loan
             {
-                Id = 123332,
-                Text = "text"
+                LoanId = 123332,
+                LoanNumber = 1234567890123
             };
             return Ok(data);
         }
 
-        [Route("object")]
-        public IHttpActionResult PostObject(TestObject data)
+        [Route("loan")]
+        public IHttpActionResult PostObject(Loan loan)
         {
-            return Ok((long)data.Id);
+            var result = DoSomething(loan.LoanId);
+
+            return Ok(result);
+        }
+
+        private long DoSomething(long loanId)
+        {
+            return default(long);
         }
     }
 
     [DataContract]
-    public class TestObject
+    public class Loan
     {
         [DataMember]
-        public ApiId Id { get; set; }
+        public ApiId LoanId { get; set; }
         [DataMember]
-        public string Text { get; set; }
+        public long LoanNumber { get; set; }
     }
 }
