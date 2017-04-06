@@ -1,9 +1,9 @@
 ﻿<h1>
-    {{restaurantView.restaurant.Name}} <small>{{restaurantView.restaurant.City}}</small>
+    {{restaurantView.restaurant.name}} <small>{{restaurantView.restaurant.city}}</small>
 </h1>
 <p class="text-muted">
-    <span class="badge">Rated {{restaurantView.restaurant.Rating | number:2}}/5.00 by {{restaurantView.restaurant.ReviewCount}} users</span>
-    Added by {{restaurantView.restaurant.User.Username || '[User]'}} on {{restaurantView.restaurant.CreateDate | date}}.
+    <span class="badge">Rated {{restaurantView.restaurant.rating | number:2}}/5.00 by {{restaurantView.restaurant.reviewCount}} users</span>
+    Added by {{restaurantView.restaurant.user.username || '[User]'}} on {{restaurantView.restaurant.createDate | date}}.
 </p>
 
 <h3>
@@ -21,8 +21,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="review in restaurantView.reviews">
-                    <td>{{review.User.Username || '[User]'}} <span class="badge">Rated: {{review.Rating | number:2}}</span></td>
-                    <td>{{review.Comment}}</td>
+                    <td>{{review.user.username || '[User]'}} <span class="badge">Rated: {{review.rating | number:2}}</span></td>
+                    <td>{{review.comment}}</td>
                 </tr>
             </tbody>
         </table>

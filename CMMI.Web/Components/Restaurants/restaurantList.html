@@ -29,14 +29,14 @@
             </thead>
             <tbody>
             <tr ng-repeat-start="group in restaurantList.restaurants">
-                <td colspan="2"><h4>{{group.City}}</h4></td>
+                <td colspan="2"><h4>{{group.city}}</h4></td>
             </tr>
-            <tr ng-repeat-end ng-repeat="restaurant in group.Restaurants">
+            <tr ng-repeat-end ng-repeat="restaurant in group.restaurants">
                 <td>
-                    <a href="restaurant/{{restaurant.Id}}">{{restaurant.Name}}</a>
-                    <span class="badge">Rated {{restaurant.Rating | number:2}}/5.00 by {{restaurant.ReviewCount}} users</span>
+                    <a href="restaurant/{{restaurant.id}}">{{restaurant.name}}</a>
+                    <span class="badge">Rated {{restaurant.rating | number:2}}/5.00 by {{restaurant.reviewCount}} users</span>
                 </td>
-                <td>{{restaurant.City}}</td>
+                <td>{{restaurant.city}}</td>
             </tr>
             </tbody>
         </table>

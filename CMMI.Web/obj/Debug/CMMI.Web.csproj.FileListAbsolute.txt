@@ -372,4 +372,3 @@ C:\Repos\RestaurantReviews.git\CMMI.Web\bin\CMMI.Data.pdb
 C:\Repos\RestaurantReviews.git\CMMI.Web\obj\Debug\CMMI.Web.csprojResolveAssemblyReference.cache
 C:\Repos\RestaurantReviews.git\CMMI.Web\obj\Debug\CMMI.Web.dll
 C:\Repos\RestaurantReviews.git\CMMI.Web\obj\Debug\CMMI.Web.pdb
-C:\Repos\RestaurantReviews.git\CMMI.Web\bin\CMMI.Data.dll.config

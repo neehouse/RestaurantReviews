@@ -50,7 +50,7 @@
             });
 
             modal.result.then(function (restaurant) {
-                $location.path('/restaurant/' + restaurant.Id);
+                $location.path('/restaurant/' + restaurant.id);
             });
         }
     }

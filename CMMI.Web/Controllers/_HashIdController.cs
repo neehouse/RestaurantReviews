@@ -29,12 +29,16 @@ namespace CMMI.Web.Controllers
         [Route("object")]
         public IHttpActionResult GetObject()
         {
-            var data = new Loan
+            var loan = new Loan
             {
                 LoanId = 123332,
                 LoanNumber = 1234567890123
             };
-            return Ok(data);
+            return Ok(new
+            {
+                LoanID = new ApiId(loan.LoanId),
+                loan.LoanNumber
+            });
         }
 
         [Route("loan")]

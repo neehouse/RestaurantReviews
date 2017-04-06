@@ -18,7 +18,7 @@ namespace CMMI.Web
             // Web API configuration and services
 
             // Use camel case for JSON data.  Removed as I already have code written when I added this line.. need to update JS/html
-//            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
